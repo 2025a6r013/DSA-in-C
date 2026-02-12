@@ -1,0 +1,27 @@
+#include <stdio.h>
+int main() {
+    int n,x;
+    int list[100];
+    int i,pos=-1;
+    scanf("%d",&n);
+    for(i=0;i<n;i++) {
+        scanf("%d",&list[i]);
+    }
+    scanf("%d",&x);
+    for(i=0;i<n;i++) {
+        if(list[i]==x) {
+            pos=i;
+            break;
+        }
+    }
+    if(pos!=-1) {
+        for(i=pos;i<n-1;i++) {
+            list[i]=list[i+1];
+        }
+        n--; 
+    }
+    for(i=0;i<n;i++) {
+        printf("%d ",list[i]);
+    }
+    return 0;
+}
