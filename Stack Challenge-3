@@ -1,0 +1,81 @@
+#include <stdio.h>
+
+#include <string.h>
+
+#include <math.h>
+
+#include <stdlib.h>
+
+int top=-1;
+
+int size=0;
+
+void push(int stack[],int n){
+
+    if(top==size-1){
+
+        printf("Overflow\n");
+
+        return ;
+
+    }
+
+    else{
+
+        stack[++top]=n;
+
+    }
+
+}
+
+void displaysort(int stack[]){
+
+        for(int i=0;i<size;i++){
+
+            for(int j=i+1;j<size;j++){
+
+                if(stack[j]>stack[i]){
+
+                    int temp=stack[j];
+
+                    stack[j]=stack[i];
+
+                    stack[i]=temp;
+
+                }
+
+            }
+
+        }
+
+       for(int i=0;i<=top;i++){
+
+           printf("%d ",stack[i]);
+
+       }
+
+    
+
+}
+
+int main() {
+
+    scanf("%d",&size);
+
+    int stack[size];
+
+    int n=0;
+
+     for(int i=0;i<size;i++){
+
+        scanf("%d",&n);
+
+        push(stack,n);
+
+     }
+
+    displaysort(stack);
+
+    return 0;
+
+}
