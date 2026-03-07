@@ -1,0 +1,69 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+
+int main() {
+    int n,k;
+    scanf("%d %d",&n,&k);
+    int size=n/k;
+    int arr[100],front[10],rear[10];
+    for(int i=0;i<k;i++){
+        front[i]=i*size;
+        rear[i]=i*size-1;
+    }
+    int q;
+    scanf("%d",&q);
+    while(q--){
+        char ch[20];
+        scanf("%s",ch);
+        if(ch[0]=='E'){
+            int q,x;
+            scanf("%d %d",&q,&x);
+            int start=(q-1)*size;
+            int end=start+size-1;
+            if(rear[q-1]==end){
+                printf("Queue Overflow\n");
+            }
+            else{
+                rear[q-1]++;
+                arr[rear[q-1]]=x;
+            }
+        }
+        if(ch[0]=='D'&&ch[1]=='E'){
+            int q;
+            scanf("%d",&q);
+            if(front[q-1]>rear[q-1]){
+                printf("Queue Underflow\n");
+            }
+            else{
+                printf("%d\n",arr[front[q-1]]);
+                front[q-1]++;
+            }
+        }
+        if(ch[0]=='P'){
+            int q;
+            scanf("%d",&q);
+            if(front[q-1]>rear[q-1]){
+                printf("Queue Underflow\n");
+            }
+            else{
+                printf("%d\n",arr[front[q-1]]);
+            }
+        }
+        if(ch[0]=='D'&&ch[1]=='I'){
+            int q;
+            scanf("%d",&q);
+            if(front[q-1]>rear[q-1]){
+                printf("Queue Underflow\n");
+            }
+            else{
+                for(int i=front[q-1];i<=rear[q-1];i++){
+                    printf("%d ",arr[i]);
+                }
+                printf("\n");
+            }
+        }
+    }
+    return 0;
+}
